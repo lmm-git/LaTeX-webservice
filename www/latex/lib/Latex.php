@@ -41,6 +41,16 @@ class Render
 	{
 		$shellscript = 'cd ' . escapeshellarg($this->workingDir) . ';';
 		$shellscript .= 'export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";';
+
+		if(isset($_POST['engine'])) {
+			$engine = $_POST['engine'];
+		} elseif(isset($_GET['engine'])) {
+			$engine = $_GET['engine'];
+		}
+		if($engine == 'lualatex' || $engine == 'pdflatex' || $engine == 'xelatex') {
+			$shellscript .= 'export LATEXENGINE=' . escapeshellarg($engine) . ';';
+		}
+
 		$shellscript .= 'lbuild ' . escapeshellarg($this->entryFile) . ' 2>&1';
 		$this->lbuildLog = shell_exec($shellscript);
 		if($this->lbuildLog === null) {
