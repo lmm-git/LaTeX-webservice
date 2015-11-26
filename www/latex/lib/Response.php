@@ -39,7 +39,7 @@ class GeneratorResponse
 	{
 		$resAr = array('success' => $this->success,
 			'message' => $this->message,
-			'file' => $this->file,
+			'file' => base64_encode($this->file),
 			'log' => $this->log,
 			'creationDate' => $this->creationDate);
 
@@ -56,9 +56,6 @@ class GeneratorResponse
 
 	public function get()
 	{
-		if($this->success && $this->file != null) {
-			return $this->getFile();
-		}
 		return $this->getJSON();
 	}
 }

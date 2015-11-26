@@ -20,7 +20,7 @@ RUN apt-get -y update \
 	&& apt-get -y clean \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV ENGINE=lualatex
+ENV LATEXENGINE=lualatex
 ENV PYTHONUNBUFFERED=1
 
 ADD https://raw.githubusercontent.com/TimNN/docker-texlive2015/master/lbuild /usr/local/bin/lbuild
