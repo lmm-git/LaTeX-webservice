@@ -23,6 +23,7 @@ RUN apt-get -y update \
 ENV LATEXENGINE=lualatex
 ENV PYTHONUNBUFFERED=1
 
+# add the lbuild command, provided at https://github.com/TimNN/docker-texlive2015/
 ADD https://raw.githubusercontent.com/TimNN/docker-texlive2015/master/lbuild /usr/local/bin/lbuild
 RUN chmod 755 /usr/local/bin/lbuild
 
