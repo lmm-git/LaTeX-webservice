@@ -43,7 +43,6 @@ RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo = 0/' /etc/php5/fpm/php.ini \
 	&& sed -i 's/;date.timezone =/date.timezone = Europe\/Berlin/' /etc/php5/fpm/php.ini
 
 # install nginx
-
 RUN apt-get update \
 	&& apt-get -y install nginx \
 	&& apt-get -y clean \
