@@ -31,7 +31,7 @@ class UploadHandler
 	{
 		unlink($this->fileLocation);
 		if($this->unpackLocation != null) {
-			#self::deleteDir($this->unpackLocation);
+			self::deleteDir($this->unpackLocation);
 		}
 	}
 
