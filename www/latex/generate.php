@@ -23,6 +23,8 @@ try {
 
 	if(isset($_GET['entryFile'])) {
 		$entryFile = str_replace('..', '', $_GET['entryFile']);
+	} elseif(isset($_POST['entryFile'])) {
+		$entryFile = str_replace('..', '', $_POST['entryFile']);
 	} else {
 		$entryFile = 'main.tex';
 	}
