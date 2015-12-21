@@ -1,31 +1,5 @@
-FROM ubuntu:wily
+FROM timnn/texlive:latest
 MAINTAINER Leonard Marschke <github@marschke.me>
-
-#ARG DEBIAN_FRONTEND=noninteractive
-
-# install texlive-full, inspired by https://github.com/TimNN/docker-texlive2015/blob/master/Dockerfile
-RUN apt-get -y update \
-	&& apt-get -y upgrade \
-	&& apt-get -y install \
-			software-properties-common \
-	&& apt-add-repository -y ppa:fkrull/deadsnakes \
-	&& apt-get -y remove --purge software-properties-common \
-	&& apt-get -y update \
-	&& apt-get -y install \
-			git \
-			python3-pip \
-			python3.5 \
-			texlive-full \
-	&& apt-get -y autoremove \
-	&& apt-get -y clean \
-	&& rm -rf /var/lib/apt/lists/*
-
-ENV LATEXENGINE=lualatex
-ENV PYTHONUNBUFFERED=1
-
-# add the lbuild command, provided at https://github.com/TimNN/docker-texlive2015/
-ADD https://raw.githubusercontent.com/TimNN/docker-texlive2015/master/lbuild /usr/local/bin/lbuild
-RUN chmod 755 /usr/local/bin/lbuild
 
 # inspired by dockerfile of https://hub.docker.com/r/jonathonf/debian-phpfpm/~/dockerfile/
 RUN apt-get update \
